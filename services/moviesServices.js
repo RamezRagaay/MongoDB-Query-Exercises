@@ -1,28 +1,53 @@
 const moviesRepo = require('../repos/moviesRepo');
 
 async function getMovies() {
-    const movies = await moviesRepo.getMovies();
-    return movies;
+    try {
+        
+        const movies = await moviesRepo.getMovies();
+        throw new Error('error');
+        return movies;
+    } catch (error) {
+        console.log("Service error")
+        throw error;
+
+    }
 };
 
 async function addMovie(movie) {
-    const result = await moviesRepo.addMovie(movie);
-    return result;
+    try {
+        const result = await moviesRepo.addMovie(movie);
+        return result;
+    } catch (error) {
+        throw error;
+    }
 }
 
 async function getMovieById(id) {
-    const movie = await moviesRepo.getMovieById(id);
-    return movie;
+    try {
+        const movie = await moviesRepo.getMovieById(id);
+        return movie;
+        
+    } catch (error) {
+        throw error;
+    }
 }
 
 async function deleteMovie(id) {
-    const result = await moviesRepo.deleteMovie(id);
-    return result;
+    try {
+        const result = await moviesRepo.deleteMovie(id);
+        return result;
+    } catch (error) {
+        throw error;
+    }
 }
 
 async function updateMovie(id, movie) {
-    const result = await moviesRepo.updateMovie(id, movie);
-    return result;
+    try {
+        const result = await moviesRepo.updateMovie(id, movie);
+        return result;
+    } catch (error) {
+        throw error;
+    }
 }
 
 module.exports = {
